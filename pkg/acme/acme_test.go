@@ -73,19 +73,6 @@ func TestAcme_Mux(t *testing.T) {
 
 	req, err = http.NewRequest(
 		"GET",
-		"http://domain1.example.com/aasdasdas/acme-challenge/token1",
-		nil,
-	)
-	assert.Nil(t, err, "no error during request")
-
-	w = httptest.NewRecorder()
-	a.Mux().ServeHTTP(w, req)
-
-	assert.Equal(t, "text/plain", w.Header().Get("Content-Type"))
-	assert.Equal(t, 404, w.Code)
-
-	req, err = http.NewRequest(
-		"GET",
 		"http://1.2.3.4/healthz",
 		nil,
 	)
